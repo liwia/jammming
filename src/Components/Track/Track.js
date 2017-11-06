@@ -7,6 +7,19 @@ class Track extends React.Component {
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
   }
+
+  addTrack()
+//give enent in ()?
+  {
+    this.props.onAdd(this.props.track);
+  }
+
+  removeTrack()
+//give enent in ()?
+  {
+    this.props.onRemove(this.props.track);
+  }
+
   renderAction(){
     if(this.props.isRemoval){
       return <a className="Track-action" onClick={this.removeTrack}>-</a>;
@@ -15,12 +28,7 @@ class Track extends React.Component {
       return <a className="Track-action" onClick={this.addTrack}>+</a>;
     }
   }
-  addTrack(){
-    this.props.onAdd(this.props.track);
-  }
-  removeTrack(){
-    this.props.onRemove(this.props.track);
-  }
+
   render(){
     return (
       <div className="Track">
@@ -30,7 +38,7 @@ class Track extends React.Component {
         </div>
         {this.renderAction()}
       </div>
-    )
+    );
   }
 }
 
