@@ -66,7 +66,7 @@ const Spotify = {
           ).then(jsonResponse => {const playlistId = jsonResponse.id;
 
               //Adding tracks to playlist on user's account
-              return fetch(`https://api.spotify.com//v1/users/${userId}/playlists/${playlistId}/tracks`,{
+              return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`,{
                 headers: headers,
                 method: 'POST',
                 body: JSON.stringify({uris: trackUris})
