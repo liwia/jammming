@@ -7,7 +7,7 @@ const Spotify = {
     if(accessToken){
       return accessToken;
     }
-//If the access token is not already set, check the URL to see if it has just been obtained.
+
       const retrievedAccessToken = window.location.href.match(/access_token([^&]*)/);
       const retrievedExpirationTime = window.location.href.match(/expires_in=([^&]*)/);
 
@@ -18,7 +18,7 @@ const Spotify = {
       window.history.pushState('Access Token', null, '/');
       // This clears the parameters, allowing us to grab a new access token when it expires.
       return accessToken;
-      //should I return accessToken?
+
 }
     else{
       const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
