@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-//import ReactDOM from 'react-dom';
+import React from 'react';
 import './App.css';
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
