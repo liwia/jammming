@@ -26,15 +26,19 @@ class App extends React.Component {
     });
   }
 
-  addTrack(track){
-    let tracks= this.state.playlistTracks;
-    //if(tracks.indexOf(track.id) === -1) // that still alows us to add more than one time
-    //{
-      tracks.push(track);
-      this.setState({
-        playlistTracks: tracks});
-    //}
-}
+  addTrack(track) {
+      let tracks = this.state.playlistTracks;
+      let inPlaylist = false;
+      tracks.forEach(arg => {
+        if (track.id === arg.id) {
+          inPlaylist = true;
+        }
+      });
+      if (!inPlaylist) {
+        tracks.push(track);
+      }
+      this.setState({playlistTracks: tracks});
+    }
 
   removeTrack(track){
   let tracks = this.state.playlistTracks;
