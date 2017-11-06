@@ -1,5 +1,5 @@
 const clientId = '47a851e4f10f4e3fb5149b913b8e9ab0';
-const redirectURI = 'http://localhost:3000/';
+const redirectUri = 'http://localhost:3000/';
 let accessToken;
 
 const Spotify = {
@@ -7,7 +7,7 @@ const Spotify = {
     if(accessToken){
       return accessToken;
     }
-
+//If the access token is not already set, check the URL to see if it has just been obtained.
       const retrievedAccessToken = window.location.href.match(/access_token=([^&]*)/);
       const retrievedExpirationTime = window.location.href.match(/expires_in=([^&]*)/);
 
@@ -18,10 +18,9 @@ const Spotify = {
       window.history.pushState('Access Token', null, '/');
       // This clears the parameters, allowing us to grab a new access token when it expires.
       return accessToken;
-
 }
     else{
-      const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
+      const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = url;
   }
 
@@ -45,8 +44,8 @@ const Spotify = {
 ));
   });
 },
-  savePlaylist(playlistName, trackURIs){
-    if(!playlistName || !trackURIs.length){return;}
+  savePlaylist(playlistName, trackUris){
+    if(!playlistName || !trackUris.length){return;}
 
     const accessToken = Spotify.getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}`};
@@ -70,7 +69,7 @@ const Spotify = {
               return fetch(`https://api.spotify.com//v1/users/${userId}/playlists/${playlistId}/tracks`,{
                 headers: headers,
                 method: 'POST',
-                body: JSON.stringify({uris: trackURIs})
+                body: JSON.stringify({uris: trackUris})
               });
           });
         });
