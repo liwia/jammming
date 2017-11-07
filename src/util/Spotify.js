@@ -1,5 +1,5 @@
 const clientId = '47a851e4f10f4e3fb5149b913b8e9ab0';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'http://jammming-liwia.surge.sh';
 let accessToken;
 
 const Spotify = {
@@ -7,7 +7,7 @@ const Spotify = {
     if(accessToken){
       return accessToken;
     }
-//If the access token is not already set, check the URL to see if it has just been obtained.
+
       const retrievedAccessToken = window.location.href.match(/access_token=([^&]*)/);
       const retrievedExpirationTime = window.location.href.match(/expires_in=([^&]*)/);
 
