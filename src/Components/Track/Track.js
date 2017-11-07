@@ -8,14 +8,12 @@ class Track extends React.Component {
     this.removeTrack = this.removeTrack.bind(this);
   }
 
-  addTrack()
-//give enent in ()?
+  addTrack(event)
   {
     this.props.onAdd(this.props.track);
   }
 
-  removeTrack()
-//give enent in ()?
+  removeTrack(event)
   {
     this.props.onRemove(this.props.track);
   }
@@ -24,9 +22,7 @@ class Track extends React.Component {
     if(this.props.isRemoval){
       return <a className="Track-action" onClick={this.removeTrack}>-</a>;
     }
-    else{
       return <a className="Track-action" onClick={this.addTrack}>+</a>;
-    }
   }
 
   render(){
